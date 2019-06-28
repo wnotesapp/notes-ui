@@ -10,7 +10,11 @@ First git clone this repo.
 - `npm install` or `yarn install`
 - `yarn start`
 
-Open any browser and go to `http://localhost:3000`
+Open Chrome using the following command in Terminal,
+
+ `open -a Google\ Chrome --args --disable-web-security --user-data-dir=""` 
+ 
+In Chrome, go to `http://localhost:3000`
 
 
 ## Credits
