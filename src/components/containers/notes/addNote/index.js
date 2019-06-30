@@ -19,7 +19,6 @@ class AddNoteContainer extends Component {
     const { content, title } = this.state;
     addNote({ content, title });
     alert('note added');
-    window.navigator.reload();
     event.preventDefault();
   }
 

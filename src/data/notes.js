@@ -1,51 +1,24 @@
-require('es6-promise').polyfill();
-import 'isomorphic-fetch';
-
 import config from '../config';
+import { get, post, put } from './request';
 
-function handleErrors(response) {
-  if (!response.ok) {
-    throw Error("Fetch error: " + response.statusText);
-  }
-  return response;
+function addNote(data) {
+  const url = config.apiUrl + config.notesPath;
+  return post(data, url);
 }
 
-function parseJSON(response) {
-  return response.json();
+function getNote(id) {
+  const url = config.apiUrl + config.notesPath + '/' + id;
+  return get(url);
 }
 
 function getNotes() {
-  return fetch(config.apiUrl + config.notesPath, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    mode: 'cors',
-  }).then(handleErrors)
-    .then(parseJSON)
-    .then((data) => {
-      return data;
-    }).catch(error => {
-      console.log(error.message);
-    });
+  const url = config.apiUrl + config.notesPath;
+  return get(url);
 }
 
-function addNote(data) {
-  return fetch(config.apiUrl + config.notesPath, {
-    method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  }).then(handleErrors)
-    .then(parseJSON)
-    .then(data => {
-      return data;
-    }).catch(error => {
-      console.log(error.message);
-    });
+function updateNote(data, id) {
+  const url = config.apiUrl + config.notesPath + '/' + id;
+  return put(data, url);
 }
 
-export { addNote, getNotes };
+export { addNote, getNote, getNotes, updateNote };

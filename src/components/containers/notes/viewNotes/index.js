@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
 import { getNotes } from '../../../../data/notes';
 
 class ViewNotesContainer extends Component {
@@ -25,7 +26,7 @@ class ViewNotesContainer extends Component {
           <ul>
             {notes.map((n, i) => {
               return (
-                <li>{n.content}</li>
+                <li><Link to={'/notes/' + n._id}>{n.title}</Link></li>
               )
             })}
           </ul>

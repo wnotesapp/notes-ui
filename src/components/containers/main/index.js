@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import AddNoteContainer from '../notes/addNote';
 import ViewNotesContainer from '../notes/viewNotes';
+import NoteDetailsContainer from '../notes/noteDetails';
 import '../../../styles/main.css';
 
 const MainContainer = () => {
@@ -15,6 +16,7 @@ const MainContainer = () => {
       <Route path='/'/>
       <Route path='/list' component={ViewNotesContainer}/>
       <Route path='/add-note' component={AddNoteContainer}/>
+      <Route path='/notes/:id' component={NoteDetailsContainer}/>
     </div>
   );
 };
